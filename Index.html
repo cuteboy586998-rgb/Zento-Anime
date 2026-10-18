@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zento Anime</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0b12;color:white;font-family:Arial,sans-serif}
+header{padding:18px;display:flex;justify-content:space-between;align-items:center;background:#151522}
+.logo{font-size:23px;font-weight:bold;color:#a78bfa}
+.logo span{color:#fff}
+.search{margin:16px;width:calc(100% - 32px);padding:13px;border:1px solid #343447;border-radius:12px;background:#191925;color:white}
+h2{margin:18px 16px}
+.hero{margin:16px;padding:24px 18px;border-radius:18px;background:linear-gradient(135deg,#5828a8,#17172c);min-height:180px}
+.hero h1{font-size:29px;margin:12px 0}
+.hero p{color:#e1d8ff}
+button{border:0;border-radius:9px;padding:11px 16px;background:#9b75ff;color:#fff;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:0 16px 24px}
+.card{background:#191925;border-radius:12px;overflow:hidden}
+.poster{height:145px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(145deg,#34215a,#171727)}
+.card h3{font-size:15px;margin:10px}
+.card p{font-size:12px;color:#b8b8ca;margin:0 10px 12px}
+footer{position:sticky;bottom:0;background:#151522;display:flex;justify-content:space-around;padding:15px 4px;color:#d0c7f5}
+</style>
+</head>
+<body>
+<header><div class="logo">ZENTO <span>ANIME</span></div><span>☰</span></header>
+<input class="search" id="search" placeholder="Search anime..." oninput="filterAnime()">
+<section class="hero">
+<p>YOUR ANIME WORLD</p>
+<h1>Discover Your Next Adventure</h1>
+<p>Explore anime, find favourites and build your watchlist.</p>
+<button onclick="document.getElementById('popular').scrollIntoView({behavior:'smooth'})">Explore Anime</button>
+</section>
+<h2 id="popular">Popular Anime</h2>
+<div class="grid" id="animeList">
+<div class="card"><div class="poster">⚔️</div><h3>Ninja Adventure</h3><p>Action • Adventure</p></div>
+<div class="card"><div class="poster">🌌</div><h3>Star Odyssey</h3><p>Sci-Fi • Fantasy</p></div>
+<div class="card"><div class="poster">🔥</div><h3>Flame Legends</h3><p>Action • Drama</p></div>
+<div class="card"><div class="poster">🐉</div><h3>Dragon Realm</h3><p>Fantasy • Adventure</p></div>
+</div>
+<footer><span>⌂ Home</span><span>◉ Discover</span><span>♡ Watchlist</span><span>☻ Profile</span></footer>
+<script>
+function filterAnime(){
+const q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(card=>{
+card.style.display=card.innerText.toLowerCase().includes(q)?'block':'none';
+});
+}
+</script>
+</body>
+</html>
