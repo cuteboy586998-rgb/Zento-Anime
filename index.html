@@ -83,15 +83,43 @@
     .poster {
       height: 220px; position: relative; overflow: hidden; border-radius: 15px;
       display: flex; align-items: end; padding: 13px;
-      background: linear-gradient(145deg, var(--c1), var(--c2));
-      border: 1px solid #ffffff10; isolation: isolate;
+      background: radial-gradient(circle at 50% 25%, var(--c2), var(--c1) 72%);
+      border: 1px solid #ffffff22; isolation: isolate;
+      box-shadow: inset 0 0 35px #0004;
+      transition: transform .25s ease, border-color .25s ease;
     }
+    .card:hover .poster { transform: translateY(-4px); border-color: #9b75ff99; }
     .poster::before {
-      content: attr(data-symbol); position: absolute; inset: 0;
-      display: grid; place-items: center; font-size: 6.3rem; font-weight: 900;
-      color: #ffffff28; text-shadow: 0 8px 35px #0008; z-index: -1;
+      content: attr(data-symbol); position: absolute; inset: -8px 0 0;
+      display: grid; place-items: center; font-size: 7rem; font-weight: 900;
+      color: #ffffff20; text-shadow: 0 8px 35px #0008; z-index: -1;
     }
-    .poster::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, #080810dc); z-index: -1; }
+    .poster::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, #05051010 15%, #05051018 48%, #080810f0 100%);
+      z-index: -1;
+    }
+    .poster-art {
+      position: absolute; width: 118px; height: 145px; top: 23px; left: 50%;
+      transform: translateX(-50%); border-radius: 48% 48% 38% 38%;
+      background: radial-gradient(ellipse at 50% 30%, #fff9 0 4%, transparent 5%),
+                  radial-gradient(ellipse at 35% 42%, #171329 0 7%, transparent 8%),
+                  radial-gradient(ellipse at 65% 42%, #171329 0 7%, transparent 8%),
+                  radial-gradient(ellipse at 50% 54%, #f6b9a0 0 25%, transparent 26%),
+                  radial-gradient(ellipse at 50% 25%, var(--hair, #171329) 0 39%, transparent 40%),
+                  radial-gradient(ellipse at 50% 100%, var(--coat, #29234e) 0 47%, transparent 48%);
+      filter: drop-shadow(0 8px 12px #0008);
+      z-index: -1;
+    }
+    .poster-art::before {
+      content: ""; position: absolute; left: 5%; right: 5%; top: -9px; height: 52px;
+      background: repeating-conic-gradient(from 15deg at 50% 100%, var(--hair, #171329) 0 12deg, transparent 13deg 24deg);
+      border-radius: 50%;
+    }
+    .poster-art::after {
+      content: ""; position: absolute; left: 32%; top: 54px; width: 36%; height: 5px;
+      background: #fff9; border-radius: 99px; box-shadow: 0 13px 0 #fff5;
+    }
     .tag { position: absolute; top: 10px; left: 10px; padding: 4px 7px; font-size: .68rem; font-weight: 800; border-radius: 7px; background: #0b0b12bd; }
     .rating { position: absolute; top: 10px; right: 10px; font-size: .72rem; font-weight: 800; background: #0b0b12bd; border-radius: 7px; padding: 4px 6px; }
     .poster-title { font-weight: 900; font-size: 1.04rem; line-height: 1.1; text-shadow: 0 2px 9px #000; }
